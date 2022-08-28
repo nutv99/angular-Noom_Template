@@ -13,28 +13,35 @@ import { ConfigService } from 'src/app/_config/config.service';
 import { FetchApiService } from 'src/app/_services/fetch-api/fetch-api.service';
 
 /*
-สร้าง Model ดังนี้ 
+สร้าง Model เพื่อไว้แสดงผล และส่งข้อมูล Form  ดังนี้ 
 1.Model สำหรับ getAll
 2.Model สำหรับ get By ID
 3.Model สำหรับ Add หรือ Post
 4.Model สำหรับ Edit หรือ Patch
 5.Model สำหรับ Delete หรือ Delete 
-วิธีการ ไปที่ swagger 
-Case 1 . getAll-->
+วิธีการ 
+1.ไปที่  http://json2ts.com/
+2.ไปที่  swagger  copy ค่า json ของ getAll ออกมา และไปที่หน้าเวบ json2ts 
+Case 1 . getAll--> นำ json ไปวางแล้ว gen TS Model ออกมา แก้ชื่อ Model โดยให้มี _getALL ต่อท้าย
+export interface Employee_GetAll {
+        name: string;
+        salary: number;
+        married: boolean;
+}
+ก็จะ ได้ Model getALL แล้ว ทำต่อไป จนครบ 5 Model 
+
+
 */
- * 
 
 @Component({
   selector: 'app-prototype',
   templateUrl: './prototype.component.html',
-  styleUrls: ['./prototype.component.css']
+  styleUrls: ['./prototype.component.css'],
 })
 export class PrototypeComponent implements OnInit {
-//สร้างตัวแปรดังนี้ 
+  //สร้างตัวแปรดังนี้
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
