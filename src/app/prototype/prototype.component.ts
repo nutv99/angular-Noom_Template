@@ -7,10 +7,13 @@ import {
   Validators,
   FormGroup,
 } from '@angular/forms';
-FetchApiService;
+
 import { ActivatedRoute } from '@angular/router';
-import { ConfigService } from 'src/app/_config/config.service';
-import { FetchApiService } from 'src/app/_services/fetch-api/fetch-api.service';
+// import { ConfigService } from 'src/app/_config/config.service';
+// import { FetchApiService } from 'src/app/_services/fetch-api/fetch-api.service';
+
+
+
 
 /*
 สร้าง Model เพื่อไว้แสดงผล และส่งข้อมูล Form  ดังนี้ 
@@ -106,7 +109,17 @@ Employee_Delete! : Model_Employee_Delete ;
 })
 export class PrototypeComponent implements OnInit {
   //สร้างตัวแปรดังนี้
+  // export interface Model_CustomerADD {
+  //   id: string;
+  //   type: string;
+  //   name: string;
+  //   ppu: number;
+  // }
+  
   constructor() {}
+  
+  ngOnInit() {
+    
 
-  ngOnInit() {}
+  }
 }
