@@ -40,13 +40,20 @@ Employee_Post! : Model_Employee_Post ;
 Employee_Patch! : Model_Employee_Patch ;
 Employee_Delete! : Model_Employee_Delete ;
 
-4.สร้างตัวแปร URL ของ API แต่ละตัว 
-// ไปดูเส้น API ใน Swagger แล้วเอามาใส่ ให้ครบ
-  Url_Get_All : string = ConfigService.API_V1_PATCH_PRODUCT_MASTER;
-  Url_Get_By_ID: string = ConfigService.API_V1_PATCH_PRODUCT_MASTER;
-  Url_Post: string = ConfigService.API_V1_PATCH_PRODUCT_MASTER;
-  Url_Patch: string = ConfigService.API_V1_PATCH_PRODUCT_MASTER;
-  Url_Delete : string = ConfigService.API_V1_PATCH_PRODUCT_MASTER;
+4.ไปกำหนด ตัวแปร ใน config.service.api ให้ครบ 5 เส้น โดย Copy ไปแปะใน ไฟล์ Config แล้ว ไล่เปลี่ยนชื่อ 
+  API_V1_GETALL_???  = ;
+  API_V1_GETBYID_??? = ;
+  API_V1_POST_??? = ; 
+  API_V1_PATCH_??? = ;
+  API_V1_DELETE_??? = ;
+จากนั้น นำชื่อมากำหนด ให้ครบ 5 ตัวแปร
+5.สร้างตัวแปร URL ของ API แต่ละตัว 
+// ไปดูเส้น API ใน Swagger แล้วเอามาใส่ ให้ครบ ???
+  Url_Get_All : string = ConfigService.API_V1_GETALL_??? ;
+  Url_Get_By_ID: string = ConfigService.API_V1_GETBYID_???;
+  Url_Post: string = ConfigService.API_V1_POST_???;
+  Url_Patch: string = ConfigService.API_V1_PATCH_???;
+  Url_Delete : string = ConfigService.API_V1_DELETE_???;
 
 5. กำหนด Constructor() ->
   constructor(
@@ -67,18 +74,19 @@ Employee_Delete! : Model_Employee_Delete ;
 
 5. สร้างตัวแปรฟอร์ม สำหรับ Post ข้อมูล 
 6. สร้างตัวแปรฟอร์ม สำหรับ Patch ข้อมูล 
-5.สร้าง function สำหรับ getAll,getByID,Post,Patch,Delete ใต้ construction 
+7.สร้าง function สำหรับ getAll,getByID,Post,Patch,Delete ใต้ construction  
+
   get_All_Employee() {
 
   }
   get_EmployeeByID() {
 
   }
-  Post_Employee() {
+  Post_Form_Employee() {
 
   }
 
-  Patch_Employee() {
+  Patch_Form_Employee() {
 
   }
 
@@ -98,7 +106,6 @@ Employee_Delete! : Model_Employee_Delete ;
 })
 export class PrototypeComponent implements OnInit {
   //สร้างตัวแปรดังนี้
-
   constructor() {}
 
   ngOnInit() {}
