@@ -1,4 +1,5 @@
 import { Component, VERSION, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 interface Model_CustomerADD {
   id: string;
@@ -32,11 +33,20 @@ export class AppComponent implements OnInit {
     type: '',
   };
 
+  DataFromBackEnd : any ;
+
+  constructor(private myhttp: HttpClient) {}
+
   ngOnInit() {
     //alert(this.CustomerADD.id);
     this.CustomerEdit.id = this.CustomerADD.id;
     this.CustomerEdit.type = 'AAA';
-  }
 
-  
+    this.myhttp
+      .get('https://lovetoshopmall.com/dataservice/categoryTest.php')
+      .subscribe((result) => {
+        this.DataFromBackEnd = result;
+        alert(this.DataFromBackEnd[0].departmentDesc);
+      });
+  }
 }
