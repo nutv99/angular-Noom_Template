@@ -48,6 +48,23 @@ Employee_Delete! : Model_Employee_Delete ;
   Url_Patch: string = ConfigService.API_V1_PATCH_PRODUCT_MASTER;
   Url_Delete : string = ConfigService.API_V1_PATCH_PRODUCT_MASTER;
 
+5. กำหนด Constructor() ->
+  constructor(
+    private location: Location,
+    private http: HttpClient,
+    private fb: FormBuilder,
+    private fetch: FetchApiService,
+    private route: ActivatedRoute
+  ) {}
+
+ 6. ngOnInit() :void  {
+    if (this.route.snapshot.params['id']) {
+       this.id = this.route.snapshot.params['id'];
+       this.dataDisplay();
+    }
+
+ }
+
 5. สร้างตัวแปรฟอร์ม สำหรับ Post ข้อมูล 
 6. สร้างตัวแปรฟอร์ม สำหรับ Patch ข้อมูล 
 5.สร้าง function สำหรับ getAll,getByID,Post,Patch,Delete ใต้ construction 
