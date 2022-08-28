@@ -26,10 +26,13 @@ export class AppComponent  implements OnInit  {
     name: 'Pubate',
     ppu: 111,
   };
-  CustomerEdit: Model_CustomerEdit;
+  CustomerEdit : Model_CustomerEdit;
  
   ngOnInit() {
-    this.CustomerEdit = this.CustomerADD ;
+    alert()
+    this.CustomerEdit.id = this.CustomerADD.id ;
+    this.CustomerEdit.type = this.CustomerADD.type ;
+
 
   }
 }
