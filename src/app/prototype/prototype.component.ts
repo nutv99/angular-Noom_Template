@@ -80,7 +80,7 @@ Employee_Delete! : Model_Employee_Delete ;
 7.สร้าง function สำหรับ getAll,getByID,Post,Patch,Delete ใต้ construction  
 
   get_All_Employee() {
-
+    
   }
   get_EmployeeByID() {
 
@@ -94,7 +94,7 @@ Employee_Delete! : Model_Employee_Delete ;
   }
 
   Delete_Employee() {
-
+    
   }
 
 

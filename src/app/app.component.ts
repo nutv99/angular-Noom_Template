@@ -8,9 +8,9 @@ interface Model_CustomerADD {
   ppu: number;
 }
 
-interface Model_CustomerEdit {
-  id: string;
-  type: string;
+interface Model_DepartmentEdit {
+  departmentID: number;
+  departmentDesc: string;
 }
 
 @Component({
@@ -19,8 +19,6 @@ interface Model_CustomerEdit {
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  name = 'Angular ' + VERSION.major;
-
   CustomerADD: Model_CustomerADD = {
     id: '001',
     type: 'GradeA',
@@ -28,25 +26,27 @@ export class AppComponent implements OnInit {
     ppu: 111,
   };
 
-  CustomerEdit: Model_CustomerEdit = {
-    id: '',
-    type: '',
+  DataFromBackEnd: Model_DepartmentEdit = {
+    departmentID: 0,
+    departmentDesc: '',
   };
-
-  DataFromBackEnd : any ;
 
   constructor(private myhttp: HttpClient) {}
 
   ngOnInit() {
     //alert(this.CustomerADD.id);
-    this.CustomerEdit.id = this.CustomerADD.id;
-    this.CustomerEdit.type = 'AAA';
+    // this.CustomerEdit.id = this.CustomerADD.id;
+    // this.CustomerEdit.type = 'AAA';
 
     this.myhttp
-      .get('https://lovetoshopmall.com/dataservice/categoryTest.php')
+      .get<Model_DepartmentEdit>(
+        'https://lovetoshopmall.com/dataservice/categoryTest.php'
+      )
       .subscribe((result) => {
         this.DataFromBackEnd = result;
         alert(this.DataFromBackEnd[0].departmentDesc);
       });
   }
+
+  get_EmployeeByID() {}
 }
