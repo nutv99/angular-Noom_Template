@@ -29,6 +29,7 @@ export interface Model_Employee_GetAll {
         salary: number;
         married: boolean;
 }
+
 ก็จะ ได้ Model getALL แล้ว ทำต่อไป จนครบ 5 Model โดยแต่ละอัน จะใส่ suffix _ ต่อท้ายดังเช่น _Post _Patch _Delete
 เช่น Model สำหรับ Post ก็จะเป็นชื่อ Model ดังเช่น Employee_Post ,Employee_Patch
 3.สร้างตัวแปร Model ให้ครบ 5 หมวด
@@ -39,7 +40,37 @@ Employee_Post! : Model_Employee_Post ;
 Employee_Patch! : Model_Employee_Patch ;
 Employee_Delete! : Model_Employee_Delete ;
 
-4.สร้าง function สำหรับ getAll,getByID,Post,Patch,Delete
+4.สร้างตัวแปร URL ของ API แต่ละตัว 
+// ไปดูเส้น API ใน Swagger แล้วเอามาใส่ ให้ครบ
+  Url_Get_All : string = ConfigService.API_V1_PATCH_PRODUCT_MASTER;
+  Url_Get_By_ID: string = ConfigService.API_V1_PATCH_PRODUCT_MASTER;
+  Url_Post: string = ConfigService.API_V1_PATCH_PRODUCT_MASTER;
+  Url_Patch: string = ConfigService.API_V1_PATCH_PRODUCT_MASTER;
+  Url_Delete : string = ConfigService.API_V1_PATCH_PRODUCT_MASTER;
+
+5. สร้างตัวแปรฟอร์ม สำหรับ Post ข้อมูล 
+6. สร้างตัวแปรฟอร์ม สำหรับ Patch ข้อมูล 
+5.สร้าง function สำหรับ getAll,getByID,Post,Patch,Delete ใต้ construction 
+  get_All_Employee() {
+
+  }
+  get_EmployeeByID() {
+
+  }
+  Post_Employee() {
+
+  }
+
+  Patch_Employee() {
+
+  }
+
+  Delete_Employee() {
+
+  }
+
+
+
 
 */
 
