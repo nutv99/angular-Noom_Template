@@ -42,5 +42,6 @@ export class AppComponent implements OnInit {
     this.CustomerEdit.id = this.CustomerADD.id;
     this.CustomerEdit.type = 'AAA';
   }
+
   
 }
