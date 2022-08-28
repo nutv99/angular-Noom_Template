@@ -27,11 +27,6 @@ export class AppComponent implements OnInit {
     ppu: 111,
   };
 
-  // CustomerEdit: Model_CustomerEdit = {
-  //   id : '',
-  //   type : ''
-  // };
-
   CustomerEdit: Model_CustomerEdit = {
     id: '',
     type: '',
