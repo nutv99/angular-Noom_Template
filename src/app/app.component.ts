@@ -43,7 +43,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     ppu: 111,
   }; 
 
-  
+
   
 
   DataFromBackEnd: Model_DepartmentEdit = {
@@ -86,7 +86,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   get_EmployeeByID() {
-
     const http$ = this.myhttp.get<Model_DepartmentEdit>(
       'https://lovetoshopmall.com/dataservice/categoryTest.php'
     );
