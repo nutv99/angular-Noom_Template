@@ -13,7 +13,7 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { GeneralService } from './general.service';
 
-// Step-2 ประกาศ Model 
+// Step-2 ประกาศ Model
 interface Model_CustomerADD {
   id: string;
   type: string;
@@ -36,16 +36,13 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   Message: string = 'idle';
   MessageErr!: any;
+
   CustomerADD: Model_CustomerADD = {
     id: '001',
     type: 'GradeA',
     name: 'Pubate',
     ppu: 111,
-  }; 
-
-
-  
-  
+  };
 
   DataFromBackEnd: Model_DepartmentEdit = {
     departmentID: 0,
@@ -57,15 +54,18 @@ export class AppComponent implements OnInit, AfterViewInit {
   apiURL: string = 'https://lovetoshopmall.com/dataservice/';
   //endpoint:string = '';
 
-  constructor(private myhttp: HttpClient,private generalService:GeneralService) {}
+  constructor(
+    private myhttp: HttpClient,
+    private generalService: GeneralService
+  ) {}
 
   ngOnInit() {
     // this.get_EmployeeByID();
-    let data = this.getEmployees();    
+    let data = this.getEmployees();
     data.subscribe({
       next: (res) => {
         console.log(res);
-        this.Message = 'ค้นคืนข้อมูล สำเร็จ';
+        this.Message = 'ค้นคืนข้อมูล สำเร็จ' + JSON.stringify(res);
         this.DataFromBackEnd = res;
       },
       error: (err: Error) => {
@@ -94,7 +94,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     http$.subscribe({
       next: (res) => {
         console.log(res);
-        this.Message = 'ค้นคืนข้อมูล สำเร็จ';
+        this.Message = 'ค้นคืนข้อมูล สำเร็จ' + res;
       },
       error: (err: Error) => {
         err: err ? err : 'เกิดข้อผิดพลาด ไม่สามารถ ค้นคืนข้อมูล' + err.message;
