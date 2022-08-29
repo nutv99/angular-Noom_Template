@@ -28,8 +28,8 @@ interface Model_DepartmentEdit {
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit, AfterViewInit {
-  @ViewChild('AAA') AAA: ElementRef;
   @ViewChild('myNameElem') myNameElem: ElementRef;
+
   Message: string = 'idle';
   MessageErr!: any;
   CustomerADD: Model_CustomerADD = {
@@ -45,34 +45,26 @@ export class AppComponent implements OnInit, AfterViewInit {
   };
 
   isLoading: boolean = false;
+  testMode: boolean = true;
   //endpoint:string = '';
 
   constructor(private myhttp: HttpClient) {}
 
   ngOnInit() {
-    // console.log(this.AAA.nativeElement.value);
+    
 
-    // this.myhttp
-    //   .get<Model_DepartmentEdit>(
-    //     'https://lovetoshopmall.com/dataservice/categoryTest.php'
-    //   )
-    //   .subscribe(
-    //     (result) => {
-    //       // success
-    //       this.isLoading = true;
-    //       alert(this.isLoading);
-    //     },
-    //     (err) => {
-    //       // some error happened
-    //       this.isLoading = false;
-    //       alert(this.isLoading);
-    //     }
-    //   );
+    
+  }
+
+  ngAfterViewInit() {
+    console.log(this.myNameElem.nativeElement.value);
+  }
+
+  get_EmployeeByID() {
 
     const http$ = this.myhttp.get<Model_DepartmentEdit>(
       'https://lovetoshopmall.com/dataservice/categoryTest888.php'
     );
-
     http$.subscribe({
       next: (res) => {
         console.log(res);
@@ -80,8 +72,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       },
       error: (err: Error) => {
         err: err ? err : "Something went wrong! Couldn't save permissions.";
-        this.MessageErr = err.message;
-        alert(this.MessageErr);
+        this.Message = err.message;
         console.error(err);
       },
       complete: () => {
@@ -89,10 +80,4 @@ export class AppComponent implements OnInit, AfterViewInit {
       },
     });
   }
-
-  ngAfterViewInit() {
-    console.log(this.myNameElem.nativeElement.value);
-  }
-
-  get_EmployeeByID() {}
 }
