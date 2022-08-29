@@ -12,6 +12,7 @@ import { tap, finalize } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
+// Step-2 ประกาศ Model 
 interface Model_CustomerADD {
   id: string;
   type: string;
@@ -81,9 +82,11 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   get_EmployeeByID() {
+
     const http$ = this.myhttp.get<Model_DepartmentEdit>(
       'https://lovetoshopmall.com/dataservice/categoryTest888.php'
     );
+
     http$.subscribe({
       next: (res) => {
         console.log(res);
