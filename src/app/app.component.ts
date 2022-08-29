@@ -67,6 +67,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         console.log(res);
         this.Message = 'ค้นคืนข้อมูล สำเร็จ' + JSON.stringify(res);
         this.DataFromBackEnd = res;
+        console.log('All Key', Object.keys(res));
       },
       error: (err: Error) => {
         err: err ? err : 'เกิดข้อผิดพลาด ไม่สามารถ ค้นคืนข้อมูล' + err.message;
@@ -78,12 +79,12 @@ export class AppComponent implements OnInit, AfterViewInit {
         console.info('complete'); // Stop & Destroy Observable
       },
     });
-
     console.log('Data ', data);
   }
 
   ngAfterViewInit() {
-    console.log(this.myNameElem.nativeElement.value);
+    //console.log(this.myNameElem.nativeElement.value);
+    console.log('Key--After ViewInit', Object.keys(this.DataFromBackEnd));
   }
 
   get_EmployeeByID() {
