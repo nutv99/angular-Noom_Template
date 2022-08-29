@@ -11,6 +11,7 @@ import { Subject } from 'rxjs';
 import { tap, finalize } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { GeneralService } from './general.service';
 
 // Step-2 ประกาศ Model 
 interface Model_CustomerADD {
@@ -52,7 +53,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   apiURL: string = 'https://lovetoshopmall.com/dataservice/';
   //endpoint:string = '';
 
-  constructor(private myhttp: HttpClient) {}
+  constructor(private myhttp: HttpClient,private generalService:GeneralService) {}
 
   ngOnInit() {
     // this.get_EmployeeByID();

@@ -5,9 +5,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 
+
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ,HttpClientModule],
-  declarations: [ AppComponent,  HelloComponent, ],
-  bootstrap:    [ AppComponent ]
+  imports: [BrowserModule, FormsModule, HttpClientModule],
+  declarations: [AppComponent, HelloComponent],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
