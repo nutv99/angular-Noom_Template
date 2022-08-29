@@ -63,6 +63,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       next: (res) => {
         console.log(res);
         this.Message = 'ค้นคืนข้อมูล สำเร็จ';
+        this.DataFromBackEnd = res;
       },
       error: (err: Error) => {
         err: err ? err : 'เกิดข้อผิดพลาด ไม่สามารถ ค้นคืนข้อมูล' + err.message;
@@ -105,7 +106,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   getEmployees(): Observable<Model_DepartmentEdit> {
     return this.myhttp
-      .get<Model_DepartmentEdit>(this.apiURL + '/categoryTest888.php')
+      .get<Model_DepartmentEdit>(this.apiURL + '/categoryTest.php')
       .pipe(retry(1), catchError(this.handleError));
   }
 
