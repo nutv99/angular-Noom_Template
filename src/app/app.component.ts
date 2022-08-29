@@ -41,7 +41,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     type: 'GradeA',
     name: 'Pubate',
     ppu: 111,
-  };
+  }; 
+
+  
 
   DataFromBackEnd: Model_DepartmentEdit = {
     departmentID: 0,
