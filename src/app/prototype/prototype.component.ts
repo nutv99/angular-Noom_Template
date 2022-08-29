@@ -12,9 +12,6 @@ import { ActivatedRoute } from '@angular/router';
 // import { ConfigService } from 'src/app/_config/config.service';
 // import { FetchApiService } from 'src/app/_services/fetch-api/fetch-api.service';
 
-
-
-
 /*
 สร้าง Model เพื่อไว้แสดงผล และส่งข้อมูล Form  ดังนี้ 
 1.Model สำหรับ getAll
@@ -44,6 +41,7 @@ Employee_Patch! : Model_Employee_Patch ;
 Employee_Delete! : Model_Employee_Delete ;
 
 4.ไปกำหนด ตัวแปร ใน config.service.api ให้ครบ 5 เส้น โดย Copy ไปแปะใน ไฟล์ Config แล้ว ไล่เปลี่ยนชื่อ 
+หรือใช้ Snippet->API
   API_V1_GETALL_???  = ;
   API_V1_GETBYID_??? = ;
   API_V1_POST_??? = ; 
@@ -115,11 +113,8 @@ export class PrototypeComponent implements OnInit {
   //   name: string;
   //   ppu: number;
   // }
-  
-  constructor() {}
-  
-  ngOnInit() {
-    
 
-  }
+  constructor() {}
+
+  ngOnInit() {}
 }
