@@ -84,7 +84,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   get_EmployeeByID() {
 
     const http$ = this.myhttp.get<Model_DepartmentEdit>(
-      'https://lovetoshopmall.com/dataservice/categoryTest888.php'
+      'https://lovetoshopmall.com/dataservice/categoryTest.php'
     );
 
     http$.subscribe({
