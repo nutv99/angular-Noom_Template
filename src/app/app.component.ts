@@ -9,6 +9,8 @@ import {
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { tap, finalize } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { retry, catchError } from 'rxjs/operators';
 
 interface Model_CustomerADD {
   id: string;
@@ -46,12 +48,17 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   isLoading: boolean = false;
   testMode: boolean = true;
+  apiURL: string = 'https://lovetoshopmall.com/dataservice/';
   //endpoint:string = '';
 
   constructor(private myhttp: HttpClient) {}
 
   ngOnInit() {
-    this.get_EmployeeByID();
+    // this.get_EmployeeByID();
+    let data = this.getEmployees();
+    data.subscribe();
+
+    console.log('Data ', data);
   }
 
   ngAfterViewInit() {
@@ -65,16 +72,38 @@ export class AppComponent implements OnInit, AfterViewInit {
     http$.subscribe({
       next: (res) => {
         console.log(res);
-        this.Message = 'Get Data Success';
+        this.Message = 'ค้นคืนข้อมูล สำเร็จ';
       },
       error: (err: Error) => {
         err: err ? err : 'เกิดข้อผิดพลาด ไม่สามารถ ค้นคืนข้อมูล' + err.message;
-        this.Message = 'เกิดข้อผิดพลาด ไม่สามารถ ค้นคืนข้อมูล ::: ' + err.message;
+        this.Message =
+          'เกิดข้อผิดพลาด ไม่สามารถ ค้นคืนข้อมูล ::: ' + err.message;
         console.error(err);
       },
       complete: () => {
         console.info('complete'); // Stop & Destroy Observable
       },
+    });
+  }
+
+  getEmployees(): Observable<Model_DepartmentEdit> {
+    return this.myhttp
+      .get<Model_DepartmentEdit>(this.apiURL + '/categoryTest888.php')
+      .pipe(retry(1), catchError(this.handleError));
+  }
+
+  handleError(error: any) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Get client-side error
+      errorMessage = error.error.message;
+    } else {
+      // Get server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    window.alert(errorMessage);
+    return throwError(() => {
+      return errorMessage;
     });
   }
 }
