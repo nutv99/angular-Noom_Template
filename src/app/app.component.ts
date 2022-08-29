@@ -55,10 +55,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     // this.get_EmployeeByID();
-    let data = this.getEmployees();
-    // data.subscribe((response) => {
-    //   alert(JSON.stringify(response));
-    // });
+    let data = this.getEmployees();    
     data.subscribe({
       next: (res) => {
         console.log(res);
