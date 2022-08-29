@@ -69,6 +69,7 @@ Employee_Delete! : Model_Employee_Delete ;
     if (this.route.snapshot.params['id']) {
        this.id = this.route.snapshot.params['id'];
        this.dataDisplay();
+       this.get_All_Employee()
     }
 
  }
