@@ -4,6 +4,7 @@ import {
   OnInit,
   ViewChild,
   ElementRef,
+  AfterViewInit,
 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
@@ -26,10 +27,11 @@ interface Model_DepartmentEdit {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('AAA') AAA: ElementRef;
   @ViewChild('myNameElem') myNameElem: ElementRef;
-
+  Message: string = 'idle';
+  MessageErr!: any;
   CustomerADD: Model_CustomerADD = {
     id: '001',
     type: 'GradeA',
@@ -50,22 +52,42 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     // console.log(this.AAA.nativeElement.value);
 
-    this.myhttp
-      .get<Model_DepartmentEdit>(
-        'https://lovetoshopmall.com/dataservice/categoryTest.php'
-      )
-      .subscribe(
-        (result) => {
-          // success
-          this.isLoading = true;
-          alert(this.isLoading);
-        },
-        (err) => {
-          // some error happened
-          this.isLoading = false;
-          alert(this.isLoading);
-        }
-      );
+    // this.myhttp
+    //   .get<Model_DepartmentEdit>(
+    //     'https://lovetoshopmall.com/dataservice/categoryTest.php'
+    //   )
+    //   .subscribe(
+    //     (result) => {
+    //       // success
+    //       this.isLoading = true;
+    //       alert(this.isLoading);
+    //     },
+    //     (err) => {
+    //       // some error happened
+    //       this.isLoading = false;
+    //       alert(this.isLoading);
+    //     }
+    //   );
+
+    const http$ = this.myhttp.get<Model_DepartmentEdit>(
+      'https://lovetoshopmall.com/dataservice/categoryTest888.php'
+    );
+
+    http$.subscribe({
+      next: (res) => {
+        console.log(res);
+        this.Message = 'Get Data Success';
+      },
+      error: (err: Error) => {
+        err: err ? err : "Something went wrong! Couldn't save permissions.";
+        this.MessageErr = err.message;
+        alert(this.MessageErr);
+        console.error(err);
+      },
+      complete: () => {
+        console.info('complete'); // Stop & Destroy Observable
+      },
+    });
   }
 
   ngAfterViewInit() {
