@@ -51,9 +51,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(private myhttp: HttpClient) {}
 
   ngOnInit() {
-    
-
-    
+    this.get_EmployeeByID();
   }
 
   ngAfterViewInit() {
@@ -61,7 +59,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   get_EmployeeByID() {
-
     const http$ = this.myhttp.get<Model_DepartmentEdit>(
       'https://lovetoshopmall.com/dataservice/categoryTest888.php'
     );
@@ -71,8 +68,8 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.Message = 'Get Data Success';
       },
       error: (err: Error) => {
-        err: err ? err : "Something went wrong! Couldn't save permissions.";
-        this.Message = err.message;
+        err: err ? err : 'เกิดข้อผิดพลาด ไม่สามารถ ค้นคืนข้อมูล' + err.message;
+        this.Message = 'เกิดข้อผิดพลาด ไม่สามารถ ค้นคืนข้อมูล ::: ' + err.message;
         console.error(err);
       },
       complete: () => {
