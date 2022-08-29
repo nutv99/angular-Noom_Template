@@ -56,7 +56,24 @@ export class AppComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     // this.get_EmployeeByID();
     let data = this.getEmployees();
-    data.subscribe();
+    // data.subscribe((response) => {
+    //   alert(JSON.stringify(response));
+    // });
+    data.subscribe({
+      next: (res) => {
+        console.log(res);
+        this.Message = 'ค้นคืนข้อมูล สำเร็จ';
+      },
+      error: (err: Error) => {
+        err: err ? err : 'เกิดข้อผิดพลาด ไม่สามารถ ค้นคืนข้อมูล' + err.message;
+        this.Message =
+          'เกิดข้อผิดพลาด ไม่สามารถ ค้นคืนข้อมูล ::: ' + err.message;
+        console.error(err);
+      },
+      complete: () => {
+        console.info('complete'); // Stop & Destroy Observable
+      },
+    });
 
     console.log('Data ', data);
   }
@@ -102,6 +119,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     window.alert(errorMessage);
+
     return throwError(() => {
       return errorMessage;
     });
